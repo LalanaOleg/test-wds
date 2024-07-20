@@ -1,0 +1,26 @@
+%linkHover {
+	transition: color 0.3s;
+	@media (any-hover: hover) {
+		&:hover {
+			color: $goldColor;
+		}
+	}
+}
+
+%imageHover {
+	display: inline-block;
+	overflow: hidden;
+
+	img {
+		transition: transform 0.3s;
+		@media (any-hover: hover) {
+			&:hover {
+				transform: scale(1.05);
+			}
+		}
+	}
+}
+
+.link {
+	@extend %linkHover;
+}

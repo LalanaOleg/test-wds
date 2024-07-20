@@ -1,3 +1,119 @@
-//====================================================================================================
+.footer {
+	padding: toRem(30) 0;
+	background-color: $footerBackgroundColor;
+	@media (min-width: $mobile) {
+		padding: toRem(70) 0;
+	}
+	// .footer__container
+	&__container {
+		display: flex;
+		justify-content: space-between;
+        flex-wrap: wrap;
+		gap: em(20);
+	}
+	// .footer__column
+	&__column {
+		color: $lightGreyColor;
+        
+        @media (max-width:$tablet){
+            flex: 0 0 48%;
+        }
+        @media (max-width:$mobileSmall){
+            flex: 1 1 auto; 
+        }
+	}
+	// .footer__logo
+	&__logo {
+		max-width: toRem(380);
+		width: 100%;
+		margin-bottom: toRem(15);
+	}
+	// .footer__description
+	&__description {
+		margin-bottom: toRem(15);
+		@media (min-width: $mobileSmall) {
+			max-width: toRem(290);
+			margin-bottom: toRem(30);
+		}
+	}
+	// .footer__contacts
+	&__contacts {
+		> *:not(:last-child) {
+			margin-bottom: toRem(10);
+		}
+	}
+	// .footer__contact
+	&__contact {
+		display: flex;
+		align-items: center;
+		gap: toRem(5);
+	}
+	// .footer__title
+	&__title {
+		color: $mainColor;
+		font-size: toRem(18);
+		text-transform: uppercase;
+		margin-bottom: toRem(15);
+	}
+	// .footer__posts
+	&__posts {
+	}
+	// .footer__post
+	&__post {
+		display: flex;
+		flex-direction: row-reverse;
+        justify-content: flex-end;
+		gap: toRem(15);
 
-//====================================================================================================
+		&:not(:last-child) {
+			padding-bottom: toRem(15);
+			border-bottom: 1px solid #dfdfdf;
+			margin-bottom: toRem(15);
+		}
+	}
+	// .footer__text-block
+	&__text-block {
+		@media (min-width: $tablet) {
+			max-width: toRem(200);
+		}
+	}
+	// .footer__post-title
+	&__post-title {
+		text-transform: uppercase;
+		color: $greyColor;
+		@extend %linkHover;
+		margin-bottom: toRem(10);
+		a {
+			display: block;
+		}
+	}
+	// .footer__date
+	&__date {
+	}
+	// .footer__image-block
+	&__image-block {
+		flex: 0 0 toRem(75);
+		width: toRem(75);
+	}
+	// .footer__image
+	&__image {
+		@extend %imageHover;
+
+		img {
+			width: 100%;
+		}
+	}
+	// .footer__links
+	&__links {
+	}
+	// .footer__link
+	&__link {
+		@extend %linkHover;
+		&:not(:last-child) {
+			margin-bottom: toRem(10);
+		}
+        @media (max-width:$mobileSmall){
+            max-width: toRem(128.5); 
+        }
+	}
+}

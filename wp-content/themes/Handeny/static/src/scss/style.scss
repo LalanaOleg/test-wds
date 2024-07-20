@@ -5,6 +5,8 @@
 
 // Connecting fonts ===========================================================================================================================================================================================================================================================================
 //&display=swap - add when connecting through a plugin
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Marcellus&display=swap");
 
 // Connecting icon fonts ==============================================================================================================================================================================================================================================================================
 // Connect if there is an icon font file
@@ -15,10 +17,18 @@
 // ============================================================================================================================================================================================================================================================================================================================================================================================
 
 // Default font ==============================================================================================================================================================================================================================================================================
-$fontFamily: "";
+$fontFamily: "Lora", serif;
+$secondaryFontFamily: "Marcellus", serif;
 $fontSize: toRem(14);
 // Primary colors
 $mainColor: #000; // Default font color
+$whiteColor: #fff;
+$lightGreyColor: #777;
+$greyColor: #242424;
+$goldColor: #c3935b;
+$mainBackgroundColor: #f4f4f4;
+$footerBackgroundColor: #eaeaea;
+$headerBackgroundColor: #040404;
 
 // Adaptive grid settings ===============================================================================================================================================================================================================================================================================================
 
@@ -100,8 +110,16 @@ Snippet (HTML): cnt
 			@if ($maxWidthContainer>0) {
 				padding: 0 toRem(math.div($containerPadding, 2));
 			} @else {
-				@include adaptiveValue("padding-left", math.div($containerPadding, 2), 15);
-				@include adaptiveValue("padding-right", math.div($containerPadding, 2), 15);
+				@include adaptiveValue(
+					"padding-left",
+					math.div($containerPadding, 2),
+					15
+				);
+				@include adaptiveValue(
+					"padding-right",
+					math.div($containerPadding, 2),
+					15
+				);
 			}
 		}
 	}

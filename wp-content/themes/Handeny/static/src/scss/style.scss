@@ -86,11 +86,16 @@ body {
 	// Push footer down
 	> main {
 		flex: 1 1 auto;
+		background-color: $mainBackgroundColor;
 	}
 	// Fix for sliders
 	> * {
 		min-width: 0;
 	}
+}
+// just to not show error screen when any warnings occur
+#webpack-dev-server-client-overlay {
+	display: none;
 }
 // Limiting container ======================================================================================================================================================================================================================
 /*

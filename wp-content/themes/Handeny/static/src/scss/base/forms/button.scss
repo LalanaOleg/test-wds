@@ -3,12 +3,63 @@
 
 .button {
 	display: inline-flex;
-	padding: 0px 0px;
+	justify-content:center;align-items: center;
+	padding: em(10) em(14);
+	font-weight: 500;
+	text-transform: uppercase;
+	border: toRem(1) solid $whiteColor;
+	color: $whiteColor;
+	transition: all 0.3s;
+
+	@media (min-width: $mobileSmall) {
+		min-height: toRem(45);
+	}
+
 	@media (any-hover: hover) {
 		&:hover {
+			color: $mainColor;
+			background-color: $whiteColor;
+		}
+
+		&:active {
+			color: $mainColor;
+			background-color: $lightGreyColor;
 		}
 	}
-	&--fw {
-		width: 100%;
+
+	&_white {
+		background-color: $whiteColor;
+		color: $mainColor;
+
+		@media (any-hover: hover) {
+			&:hover {
+				color: $whiteColor;
+				background-color: transparent;
+			}
+
+			&:active {
+				color: $mainColor;
+				background-color: $lightGreyColor;
+			}
+		}
+	}
+
+	&_grey {
+		border: toRem(1) solid $lightGreyColor;
+		background-color: $lightGreyColor;
+
+		@media (any-hover: hover) {
+			&:hover {
+				color: $whiteColor;
+				background-color: $mainColor;
+				border-color: $mainColor;
+			}
+
+			&:active {
+				background-color: $mainColor;
+				color: $whiteColor;
+				border-color: $mainColor;
+			}
+		}
 	}
 }

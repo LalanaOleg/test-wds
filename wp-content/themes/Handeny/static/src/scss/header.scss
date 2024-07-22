@@ -1,54 +1,296 @@
 //====================================================================================================
+$headerBreakpoint: em(819.8);
+
 .header {
+	background-color: $headerBackgroundColor;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	transition: background-color 0.3s;
+
+	&._header-scroll {
+		background-color: rgba($color: $headerBackgroundColor, $alpha: 0.8);
+	}
 	// .header__container
 	&__container {
 	}
 	// .header__menu
 	&__menu {
-	}
-	// .header__logo
-	&__logo {
+		padding: toRem(20) 0;
+		transition: padding 0.3s;
+
+		._header-scroll & {
+			padding: toRem(10) 0;
+		}
 	}
 }
 .menu {
+	display: grid;
+	place-items: center;
+	color: $whiteColor;
+	grid-template-columns: toRem(80) 1fr 1fr;
+
+	@media (min-width: $mobileSmall) {
+		grid-template-columns: toRem(110) 3fr 1fr;
+	}
+	@media (min-width: $headerBreakpoint) {
+		grid-template-columns: toRem(110) 3fr 1fr auto;
+	}
+
+	@include adaptiveValue("gap", 90, 20, 0, $containerWidth, 991);
+
+	// .menu__logo
+	&__logo {
+		position: relative;
+		z-index: 110;
+
+		img {
+			max-width: 100%;
+		}
+	}
 	// .menu__body
 	&__body {
+		@media (max-width: $headerBreakpoint) {
+			overflow: auto;
+			position: fixed;
+			bottom: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background-color: #000000;
+			padding: toRem(100) toRem(30) toRem(20) toRem(30);
+			transition: left 0.3s;
+
+			.menu-open & {
+				left: 0;
+			}
+
+			&::before {
+				content: "";
+				z-index: 105;
+				position: fixed;
+				width: 100%;
+				height: toRem(60);
+				top: 0;
+				left: 0;
+				background-color: #000;
+
+				height: toRem(68);
+				._header-scroll & {
+					height: toRem(48);
+				}
+				@media (min-width: $mobileSmall) {
+					height: toRem(80);
+					._header-scroll & {
+						height: toRem(60);
+					}
+				}
+			}
+		}
 	}
 	// .menu__list
 	&__list {
+		@media (min-width: $headerBreakpoint) {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: toRem(13);
+		}
+		@media (min-width: $tablet) {
+			gap: toRem(30);
+		}
 	}
 	// .menu__item
 	&__item {
+		position: relative;
+
+		@media (max-width: $headerBreakpoint) {
+			&.active {
+				.menu__title::after {
+					transform: rotate(-90deg);
+				}
+				.menu__sub-menu {
+					display: block;
+				}
+			}
+			&:not(:last-child) {
+				margin-bottom: toRem(10);
+			}
+		}
+		@media (min-width: $headerBreakpoint) {
+			html:not(.touch) &:hover {
+				.menu__title::after {
+					transform: rotate(-90deg);
+				}
+				.menu__sub-menu {
+					opacity: 1;
+					visibility: visible;
+					pointer-events: all;
+					transform: translate(0px, 0);
+				}
+			}
+			html.touch &.active {
+				.menu__title::after {
+					transform: rotate(-90deg);
+				}
+				.menu__sub-menu {
+					opacity: 1;
+					visibility: visible;
+					pointer-events: all;
+					transform: translate(0px, 0);
+				}
+			}
+		}
 	}
 	// .menu__title
 	&__title {
+		text-transform: uppercase;
+		font-family: $secondaryFontFamily;
+		display: flex;
+		align-items: center;
+
+		&::after {
+			display: inline-block;
+			transition: transform 0.3s;
+			content: "";
+			margin-left: toRem(4);
+			width: toRem(16);
+			height: toRem(16);
+			background: url("../img/icons/arrow.svg") no-repeat center / 150%;
+			transform: rotate(90deg);
+		}
+
+		@media (max-width: $headerBreakpoint) {
+			justify-content: space-between;
+			font-size: toRem(26);
+
+			&::after {
+				background-size: 250%;
+			}
+		}
 	}
 	// .menu__sub-menu
 	&__sub-menu {
+		background-color: $goldColor;
+		transition: all 0.3s;
+
+		@media (max-width: $headerBreakpoint) {
+			display: none;
+			padding: toRem(10);
+			background-color: rgba($color: $goldColor, $alpha: 0.6);
+		}
+		@media (min-width: $headerBreakpoint) {
+			position: absolute;
+			top: 100%;
+			right: 0;
+			padding: toRem(15);
+			min-width: toRem(150);
+			transform: translate(0px, 10%);
+			opacity: 0;
+			visibility: hidden;
+			pointer-events: none;
+		}
 	}
 	// .menu__sub-item
 	&__sub-item {
+		@media (any-hover: hover) {
+			&:hover {
+				color: $greyColor;
+			}
+		}
+		&:not(:last-child) {
+			margin-bottom: toRem(10);
+		}
+		a {
+			transition: all 0.3s;
+			display: block;
+		}
 	}
 	// .menu__auth
 	&__auth {
+		text-transform: uppercase;
+		font-family: $secondaryFontFamily;
+		@extend %linkHover;
+		position: relative;
+		z-index: 110;
+
+		@media (min-width: $mobileSmall) {
+			.icon {
+				display: none;
+			}
+		}
+		@media (max-width: $mobileSmall) {
+			justify-self: end;
+			margin-right: toRem(-7);
+			.text {
+				display: none;
+			}
+			.icon {
+				fill: #fff;
+				width: toRem(24);
+				height: toRem(24);
+			}
+		}
 	}
 	// .menu__icons
 	&__icons {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: toRem(15);
+		position: relative;
+		z-index: 110;
 	}
 	// .menu__icon
 	&__icon {
+		width: toRem(16);
+		height: toRem(16);
+		path {
+			transition: all 0.3s;
+			fill: $whiteColor;
+		}
+
+		&_cart {
+			position: relative;
+		}
 	}
 	// .menu__cart
 	&__cart {
-	}
-	// .menu__cart-wrapper
-	&__cart-wrapper {
+		display: flex;
+		align-items: center;
+		gap: toRem(9);
+
+		@media (any-hover: hover) {
+			&:hover {
+				.menu__cart-total {
+					color: $goldColor;
+				}
+
+				path {
+					fill: $goldColor;
+				}
+			}
+		}
 	}
 	// .menu__cart-amount
 	&__cart-amount {
+		font-weight: 500;
+		font-size: toRem(10);
+		background-color: $goldColor;
+		border-radius: 50%;
+		padding: toRem(1) toRem(3);
+		position: absolute;
+		right: toRem(-10);
+		top: toRem(-10);
+		min-width: toRem(14);
+		height: toRem(14);
 	}
 	// .menu__cart-total
 	&__cart-total {
+		transition: all 0.3s;
+		font-family: $secondaryFontFamily;
 	}
 }
 
@@ -57,12 +299,12 @@
 //Burger
 .icon-menu {
 	display: none;
-	@media (max-width: $mobile) {
+	@media (max-width: $headerBreakpoint) {
 		display: block;
 		position: relative;
 		width: toRem(30);
 		height: toRem(18);
-		z-index: 5;
+		z-index: 110;
 		@media (any-hover: none) {
 			cursor: default;
 		}
@@ -75,7 +317,7 @@
 			position: absolute;
 			width: 100%;
 			height: toRem(2);
-			background-color: #000;
+			background-color: $whiteColor;
 		}
 		&::before {
 			top: 0;

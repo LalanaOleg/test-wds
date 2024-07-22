@@ -20,7 +20,33 @@ export function isWebp() {
 export let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
 /* Adding a touch class to HTML if the browser is mobile */
 export function addTouchClass() {
-	if (isMobile.any()) document.documentElement.classList.add('touch');
+	if (isMobile.any()) {
+		document.documentElement.classList.add('touch');
+	}
+}
+// Adding functionality to open sub menus for header
+export function subMenus() {
+	const subMenuTriggers = document.querySelectorAll('[data-open-sub-menu]');
+	if (subMenuTriggers) {
+		let activeMenu = null;
+		subMenuTriggers.forEach(trigger => {
+			trigger.addEventListener('click', (event) => {
+				event.stopPropagation();
+				if (activeMenu && activeMenu !== trigger) {
+					activeMenu.parentElement.classList.remove('active');
+				}
+				activeMenu = trigger;
+				trigger.parentElement.classList.toggle('active');
+			})
+		});
+		document.addEventListener('click', (event) => {
+			// only if there is active menu and click wasn`t on the menu or parts of it
+			if (activeMenu && !activeMenu.contains(event.target) && !activeMenu.parentElement.contains(event.target)) {
+				activeMenu.parentElement.classList.remove('active');
+				activeMenu = null;
+			}
+		});
+	}
 }
 // Adding loaded to HTML after the page is fully loaded
 export function addLoadedClass() {

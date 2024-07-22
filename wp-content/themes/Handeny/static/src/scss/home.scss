@@ -11,7 +11,7 @@
 	}
 	// .heading__container
 	&__container {
-		padding-top: toRem(55);
+		padding-top: toRem(85);
 		padding-bottom: toRem(15);
 		height: clamp(toRem(300), 100vh, toRem(1080));
 		display: flex;

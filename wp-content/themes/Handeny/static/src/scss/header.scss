@@ -1,9 +1,60 @@
 //====================================================================================================
+.header {
+	// .header__container
+	&__container {
+	}
+	// .header__menu
+	&__menu {
+	}
+	// .header__logo
+	&__logo {
+	}
+}
+.menu {
+	// .menu__body
+	&__body {
+	}
+	// .menu__list
+	&__list {
+	}
+	// .menu__item
+	&__item {
+	}
+	// .menu__title
+	&__title {
+	}
+	// .menu__sub-menu
+	&__sub-menu {
+	}
+	// .menu__sub-item
+	&__sub-item {
+	}
+	// .menu__auth
+	&__auth {
+	}
+	// .menu__icons
+	&__icons {
+	}
+	// .menu__icon
+	&__icon {
+	}
+	// .menu__cart
+	&__cart {
+	}
+	// .menu__cart-wrapper
+	&__cart-wrapper {
+	}
+	// .menu__cart-amount
+	&__cart-amount {
+	}
+	// .menu__cart-total
+	&__cart-total {
+	}
+}
 
 //====================================================================================================
 
 //Burger
-/*
 .icon-menu {
 	display: none;
 	@media (max-width: $mobile) {
@@ -53,4 +104,3 @@
 		}
 	}
 }
-*/

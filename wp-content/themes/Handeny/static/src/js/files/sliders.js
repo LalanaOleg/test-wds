@@ -55,6 +55,46 @@ function initSliders() {
 			on: {},
 		});
 	}
+	if (document.querySelector(".blog-swiper")) {
+		new Swiper(".blog-swiper", {
+			modules: [Navigation],
+			observer: true,
+			observeParents: true,
+			slidesPerView: 3,
+			spaceBetween: 15,
+			//autoHeight: true,
+			speed: 800,
+
+			//touchRatio: 0,
+			//loop: true,
+			//lazy: true,
+
+			/*
+			effect: 'fade',
+			autoplay: {
+				delay: 3000,
+				disableOnInteraction: false,
+			},
+			*/
+
+			navigation: {
+				prevEl: ".blog__left-arrow",
+				nextEl: ".blog__right-arrow",
+			},
+			breakpoints: {
+				320: {
+					slidesPerView: 1,
+				},
+				540: {
+					slidesPerView: 2,
+				},
+				760: {
+					slidesPerView: 3,
+				},
+			},
+			on: {},
+		});
+	}
 }
 
 window.addEventListener("load", function (e) {

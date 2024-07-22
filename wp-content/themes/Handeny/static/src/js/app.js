@@ -7,8 +7,9 @@ flsFunctions.addTouchClass();
 /* For burger menu */
 flsFunctions.menuInit();
 
-import './libs/select.js'
-import './files/scroll/lazyload.js';
-import './libs/watcher.js'
+import "./libs/select.js";
+import "./files/scroll/lazyload.js";
+import "./libs/watcher.js";
+import "./files/sliders.js";
 
 import "./files/script.js";

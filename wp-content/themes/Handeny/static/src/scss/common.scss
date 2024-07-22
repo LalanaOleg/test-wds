@@ -24,3 +24,69 @@
 .link {
 	@extend %linkHover;
 }
+
+.section-heading {
+	text-align: center;
+	// .section-heading__sub-title
+	&__sub-title {
+		font-style: italic;
+		font-weight: 500;
+		font-size: toRem(18);
+		color: $goldColor;
+		margin-bottom: toRem(10);
+		@media (min-width: $mobile) {
+			font-size: toRem(22);
+		}
+	}
+	// .section-heading__title
+	&__title {
+		font-size: toRem(24);
+		line-height: 133%;
+		color: $greyColor;
+		@media (min-width: $mobile) {
+			font-size: toRem(30);
+		}
+	}
+	// .section-heading__description
+	&__description {
+		line-height: 179%;
+		color: $lightGreyColor;
+		margin-top: toRem(10);
+	}
+}
+
+.swiper-arrow {
+	path {
+		transition: all 0.3s;
+	}
+
+	&.swiper-button-disabled path {
+		fill: #77777780;
+	}
+	&:hover:not(.swiper-button-disabled) {
+		cursor: pointer;
+		path {
+			fill: $mainColor;
+		}
+	}
+}
+
+.icon-button {
+	width: toRem(16);
+	height: toRem(16);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	path {
+		transition: all 0.3s;
+	}
+
+	@media (any-hover: hover) {
+		&:hover {
+			cursor: pointer;
+			path {
+				fill: $goldColor;
+			}
+		}
+	}
+}

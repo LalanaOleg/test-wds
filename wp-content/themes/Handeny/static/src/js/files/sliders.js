@@ -15,20 +15,18 @@ import "../../scss/base/swiper.scss";
 
 // Slider initialization
 function initSliders() {
-	if (document.querySelector(".swiper")) {
-		new Swiper(".swiper", {
+	if (document.querySelector(".featured__swiper")) {
+		new Swiper(".featured__swiper", {
 			modules: [Navigation],
 			observer: true,
 			observeParents: true,
-			slidesPerView: 1,
-			spaceBetween: 0,
+			slidesPerView: "auto",
+			spaceBetween: 15,
 			//autoHeight: true,
 			speed: 800,
 
 			//touchRatio: 0,
-			//simulateTouch: false,
 			//loop: true,
-			//preloadImages: false,
 			//lazy: true,
 
 			/*
@@ -39,45 +37,21 @@ function initSliders() {
 			},
 			*/
 
-			/*
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-			*/
-
-			/*
-			scrollbar: {
-				el: '.swiper-scrollbar',
-				draggable: true,
-			},
-			*/
-
 			navigation: {
-				prevEl: ".swiper-button-prev",
-				nextEl: ".swiper-button-next",
+				prevEl: ".featured__left-arrow",
+				nextEl: ".featured__right-arrow",
 			},
-			/*
 			breakpoints: {
-				640: {
+				320: {
 					slidesPerView: 1,
-					spaceBetween: 0,
-					autoHeight: true,
 				},
-				768: {
+				480: {
 					slidesPerView: 2,
-					spaceBetween: 20,
 				},
-				992: {
-					slidesPerView: 3,
-					spaceBetween: 20,
-				},
-				1268: {
-					slidesPerView: 4,
-					spaceBetween: 30,
+				639.8: {
+					slidesPerView: "auto",
 				},
 			},
-			*/
 			on: {},
 		});
 	}

@@ -20,7 +20,6 @@ export function isWebp() {
 export let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
 /* Adding a touch class to HTML if the browser is mobile */
 export function addTouchClass() {
-	// Додавання класу _touch для HTML, якщо браузер мобільний
 	if (isMobile.any()) document.documentElement.classList.add('touch');
 }
 // Adding loaded to HTML after the page is fully loaded

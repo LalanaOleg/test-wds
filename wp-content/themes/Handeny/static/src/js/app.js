@@ -11,7 +11,6 @@ flsFunctions.subMenus();
 import "./libs/select.js";
 import "./files/scroll/lazyload.js";
 import { headerScroll } from "./files/scroll/scroll.js";
-import "./libs/watcher.js";
 import "./files/sliders.js";
 
 headerScroll();

@@ -179,6 +179,11 @@
 	&__title {
 		font-size: toRem(30);
 		line-height: 117%;
+
+		a {
+			display: block;
+			@extend %linkHover;
+		}
 	}
 	// .featured-product__description
 	&__description {
@@ -365,6 +370,11 @@
 		}
 		@media (min-width: $tablet) {
 			font-size: toRem(54);
+		}
+
+		a {
+			display: block;
+			@extend %linkHover;
 		}
 	}
 	// .special__description
@@ -613,6 +623,7 @@
 	}
 	// .blog__image-ibg
 	&__image-ibg {
+		display: block;
 		padding-bottom: percent(261, 345);
 	}
 	// .blog__right-arrow

@@ -27,34 +27,41 @@
 				</div>
 				<div class="footer__column">
 					<div class="footer__title">RECENT POSTS</div>
+
+                    <?php
+                    $args = array(
+                        'post_type' => 'blog',
+                        'posts_per_page' => 2,
+						'orderby'        => 'date',
+                        'order'          => 'DESC'
+                    );
+
+                    $blog_posts = new WP_Query($args);
+
+                    if ($blog_posts->have_posts()) : ?>
+
 					<div class="footer__posts">
-						<article class="footer__post">
-							<div class="footer__text-block">
-								<h6 class="footer__post-title">
-									<a href="#">A companion for extra sleeping</a>
-								</h6>
-								<div class="footer__date">July 23, 2016</div>
-							</div>
-							<div class="footer__image-block">
-								<a href="#" class="footer__image">
-									<picture><source srcset="<?php echo get_template_directory_uri();?>/assets/img/other/footer_post.webp" type="image/webp"><img src="<?php echo get_template_directory_uri();?>/assets/img/other/footer_post.png" alt="" /></picture>
-								</a>
-							</div>
-						</article>
-						<article class="footer__post">
-							<div class="footer__text-block">
-								<h6 class="footer__post-title">
-									<a href="#">A companion for extra sleeping</a>
-								</h6>
-								<div class="footer__date">July 23, 2016</div>
-							</div>
-							<div class="footer__image-block">
-								<a href="#" class="footer__image">
-									<picture><source srcset="<?php echo get_template_directory_uri();?>/assets/img/other/footer_post.webp" type="image/webp"><img src="<?php echo get_template_directory_uri();?>/assets/img/other/footer_post.png" alt="" /></picture>
-								</a>
-							</div>
-						</article>
+                    <?php while ($blog_posts->have_posts()) : $blog_posts->the_post(); ?>
+                        <article class="footer__post">
+                            <div class="footer__text-block">
+                                <h6 class="footer__post-title">
+                                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                </h6>
+                                <div class="footer__date"><?php echo get_the_date(); ?></div>
+                            </div>
+                            <div class="footer__image-block">
+                                <a href="<?php the_permalink(); ?>" class="footer__image-ibg">
+                                    <picture>
+                                        <?php if (has_post_thumbnail()) : ?>
+                                            <?php the_post_thumbnail('medium', ['class' => 'footer__post-image']); ?>
+                                        <?php endif; ?>
+                                    </picture>
+                                </a>
+                            </div>
+                        </article>
+                    <?php endwhile; ?>
 					</div>
+                    <?php endif; ?>
 				</div>
 				<div class="footer__column">
 					<div class="footer__title">OUR STORES</div>

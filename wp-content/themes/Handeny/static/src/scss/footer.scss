@@ -97,13 +97,10 @@
 		flex: 0 0 toRem(75);
 		width: toRem(75);
 	}
-	// .footer__image
-	&__image {
-		@extend %imageHover;
-
-		img {
-			width: 100%;
-		}
+	// .footer__image-ibg
+	&__image-ibg {
+		display: block;
+		padding-bottom: percent(65, 75);
 	}
 	// .footer__links
 	&__links {

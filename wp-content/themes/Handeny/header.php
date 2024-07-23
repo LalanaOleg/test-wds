@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang=<?php bloginfo('language'); ?>>
 
 <head>
-	<title>HomePage</title>
+	<title><?php bloginfo('name'); ?></title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">

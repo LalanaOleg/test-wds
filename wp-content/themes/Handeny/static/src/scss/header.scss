@@ -19,10 +19,13 @@ $headerBreakpoint: em(819.8);
 	// .header__menu
 	&__menu {
 		padding: toRem(20) 0;
-		transition: padding 0.3s;
+		padding-top: toRem(20);
+		padding-bottom: toRem(20);
+		transition: padding-top 0.3s, padding-bottom 0.3s;
 
 		._header-scroll & {
-			padding: toRem(10) 0;
+			padding-bottom: toRem(10);
+			padding-top: toRem(10);
 		}
 	}
 }
@@ -105,6 +108,7 @@ $headerBreakpoint: em(819.8);
 	// .menu__item
 	&__item {
 		position: relative;
+		padding: toRem(5) 0;
 
 		@media (max-width: $headerBreakpoint) {
 			&.active {
@@ -150,6 +154,26 @@ $headerBreakpoint: em(819.8);
 		font-family: $secondaryFontFamily;
 		display: flex;
 		align-items: center;
+		cursor: pointer;
+
+		@media (any-hover: hover) {
+			> span {
+				position: relative;
+				&::before{
+					content:'';
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 0%;
+					height: toRem(1);
+					transition: width 0.3s;
+					background-color: $goldColor;
+				}
+			}
+			&:hover > span::before {
+				width: 100%;
+			}
+		}
 
 		&::after {
 			display: inline-block;
@@ -187,7 +211,7 @@ $headerBreakpoint: em(819.8);
 			right: 0;
 			padding: toRem(15);
 			min-width: toRem(150);
-			transform: translate(0px, 10%);
+			transform: translate(0px, 15%);
 			opacity: 0;
 			visibility: hidden;
 			pointer-events: none;
